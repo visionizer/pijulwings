@@ -1,0 +1,169 @@
+{
+	"name": "pijulwings",
+	"displayName": "PijulWings - Fly high",
+	"description": "Use Pijul more effectively in Visual Studio Code",
+	"version": "0.0.1",
+	"license": "MIT",
+	"author": {
+		"name": "Clemens Schuetz",
+		"email": "panemlp@gmx.net"
+	},
+	"publisher": "visionizer",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/visionizer/pijulwings"
+	},
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:pijulwings-sidebar-sc",
+		"onView:pijulwings-sidebar-changes",
+		"onView:pijulwings-sidebar-channels",
+		"onView:pijulwings-sidebar-remotes",
+		"onCommand:pijulwings.helloWorld",
+		"onCommand:pijulwings.askQuestion",
+		"onCommand:pijulwings.showDetailPanel",
+		"onCommand:pijulwings.refresh",
+		"onCommand:pijulwings.refreshDetailPanel",
+		"onCommand:pijulwings.dev.developerCommand",
+		"onCommand:pijulwings.addTodo",
+		"onCommand:pijulwings.initRepo"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsWelcome": [
+			{
+				"view": "pijulwings-sidebar-view",
+				"contents": "No node dependencies found [learn more](https://www.npmjs.com/).\n[Add Dependency](command:nodeDependencies.addEntry)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "pijulwings-sidebar-view",
+					"title": "PijulWings",
+					"icon": "media/logo.svg"
+				}
+			]
+		},
+		"views": {
+			"pijulwings-sidebar-view": [
+				{
+					"type": "webview",
+					"id": "pijulwings-sidebar-sc",
+					"name": "Source Control",
+					"icon": "media/logo.svg",
+					"contextualTitle": "PijulWings"
+				},
+				{
+					"type": "webview",
+					"id": "pijulwings-sidebar-changes",
+					"name": "Changes",
+					"icon": "media/logo.svg",
+					"contextualTitle": "PijulWings",
+					"visibility": "collapsed"
+				},
+				{
+					"type": "webview",
+					"id": "pijulwings-sidebar-channels",
+					"name": "Channels",
+					"icon": "media/logo.svg",
+					"contextualTitle": "PijulWings",
+					"visibility": "collapsed"
+				},
+				{
+					"type": "webview",
+					"id": "pijulwings-sidebar-remotes",
+					"name": "Remotes",
+					"icon": "media/logo.svg",
+					"contextualTitle": "PijulWings",
+					"visibility": "collapsed"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "pijulwings.helloWorld",
+				"category": "PijulWings",
+				"title": "Hello World"
+			},
+			{
+				"command": "pijulwings.askQuestion",
+				"category": "PijulWings",
+				"title": "Ask Question"
+			},
+			{
+				"command": "pijulwings.showDetailPanel",
+				"category": "PijulWings",
+				"title": "Show Detailed Pijul Overview"
+			},
+			{
+				"command": "pijulwings.refresh",
+				"category": "PijulWings",
+				"title": "Refresh Pijul"
+			},
+			{
+				"command": "pijulwings.refreshDetailPanel",
+				"category": "PijulWings",
+				"title": "Refresh Detailed Pijul Overview"
+			},
+			{
+				"command": "pijulwings.dev.developerCommand",
+				"category": "PijulWings Development",
+				"title": "Development Command"
+			},
+			{
+				"command": "pijulwings.addTodo",
+				"category": "PijulWings Development",
+				"title": "Add a TODO"
+			},
+			{
+				"command": "pijulwings.initRepo",
+				"category": "PijulWings",
+				"title": "Initialize Repository"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack",
+		"watch": "concurrently \"rollup -c -w\" \"webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "yarn run test-compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^17.1.0",
+		"@rollup/plugin-node-resolve": "^11.2.0",
+		"@rollup/plugin-typescript": "^8.2.0",
+		"@tsconfig/svelte": "^1.0.10",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"concurrently": "^6.0.0",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"rollup": "^2.3.4",
+		"rollup-plugin-svelte": "^6.0.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"svelte": "^3.35.0",
+		"svelte-check": "^1.2.5",
+		"svelte-preprocess": "^4.6.9",
+		"ts-loader": "^8.0.14",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0",
+		"webpack": "^5.19.0",
+		"webpack-cli": "^4.4.0"
+	}
+}
